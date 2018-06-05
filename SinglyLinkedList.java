@@ -1,5 +1,5 @@
 
-public class SinglyLinkedList<E> {
+public class SinglyLinkedList<E> implements Cloneable{
 	  //This is a Node. That is required in singly linked list.
       private static class Node<E>{
     	  private E element;
@@ -172,5 +172,39 @@ public class SinglyLinkedList<E> {
 	      return true;
 	      
       }
+      public SinglyLinkedList<E> clone() throws CloneNotSupportedException {
+    	  SinglyLinkedList<E> other = (SinglyLinkedList<E>) super.clone();
+    	  if(size>0) {
+    		  other.head = new Node<E>(head.getElement(),null);
+    		  Node<E> walk = head.getNext();
+    		  Node<E> otherTail = other.head;
+    		  while(walk!=null) {
+    			  Node<E> newest = new Node<>(walk.getElement( ), null);
+    			  otherTail.setNext(newest);
+    			// link previous node to this one
+    			otherTail = newest;
+    			walk = walk.getNext( );
+    		  }
+    	  }
+    	  return other;
+      }  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    		  
+    	  
          
 }
