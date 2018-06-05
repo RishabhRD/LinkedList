@@ -48,11 +48,12 @@ public class CircularlyLinkedList<E> {
     }
     public void addFirst(E e) {
     	if(isEmpty()) {
-    		tail = new Node<E>(e,tail);
+    		tail = new Node<E>(e,null);
+    		tail.setNext(tail);
     	}
     	else {
     		Node<E> newest = new Node<E>(e,tail.getNext());
-    		newest.setNext(newest);
+    		tail.setNext(newest);
     	}
     	size++;
     		
