@@ -154,5 +154,23 @@ public class SinglyLinkedList<E> {
       private Node<E> getSecondLast() {
     	  return getNode(size-2);
       }
+      public boolean equals(Object o) {
+    	  if(o==null)return false;
+	      if(getClass() != o.getClass())
+    		  return false;
+	      SinglyLinkedList other = (SinglyLinkedList) o;
+	      if(size!=other.size()) {
+	    	  return false;
+	      }
+	      Node a = head;
+	      Node b = other.head;
+	      while(a!=null) {
+	    	  if(!a.getElement().equals(b.getElement())) return false;
+	    	  a = a.getNext();
+	    	  b = b.getNext();
+	      }
+	      return true;
+	      
+      }
          
 }
